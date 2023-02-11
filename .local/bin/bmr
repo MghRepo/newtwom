@@ -1,0 +1,10 @@
+#!/bin/sh
+
+bemenu-run -b -p "" --fn "JetBrainsMono 14" --fb "#69a1cf" \
+                                            --ff "#363a38" \
+                                            --hb "#265f8f" \
+                                            --hf "#fdfffe" \
+                                            --nb "#69A1cf" \
+                                            --nf "#363a38" \
+
+exit 0

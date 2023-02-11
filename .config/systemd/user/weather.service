@@ -1,0 +1,10 @@
+[Unit]
+Description=Get Weather
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/hugo/.local/bin/weather Toulouse
+
+[Install]
+WantedBy=default.target

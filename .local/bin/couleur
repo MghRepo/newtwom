@@ -1,0 +1,9 @@
+#!/bin/sh
+
+couleurs=("Blancs\t" "Rouges\t" "Verts\t" "Oranges\t" "Bleus\t" "Violets\t" "Turquoises" "Noirs\t")
+for i in {0..7}
+do
+    echo -e "\t${couleurs[$i]}\t: \e[3"$i"m⬛\e[9"$i"m⬛\e[m"
+done
+
+exit 0

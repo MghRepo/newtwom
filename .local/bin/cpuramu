@@ -1,0 +1,10 @@
+#!/bin/bash
+
+topb=$XDG_RUNTIME_DIR/topb
+top -bn1 >$topb
+
+cpu=$(rg "Cpu" $topb | tr ',' '.' | awk '{print 100-$8"%"}')
+ram=$(rg "MiB Mem" $topb | tr ',' '.' | awk '{print 100*$8/$4}' | sed -r 's/(.+\..).*/\1%/')
+echo "[CPU $cpu][RAM $ram]"
+
+exit 0

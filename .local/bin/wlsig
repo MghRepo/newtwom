@@ -1,0 +1,6 @@
+#!/bin/bash
+
+wifi=$(echo "scale=1;$(iwconfig wlan0 | rg -o "[0-9]+/[0-9]+")*100" | bc)
+echo "W ${wifi%.0}%"
+
+exit 0

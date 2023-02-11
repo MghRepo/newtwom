@@ -1,0 +1,5 @@
+#!/bin/bash
+
+file=~/images/cpt.png
+grim $file 
+notify-send -i $file "Clic :)" "Capture d'écran réussie\n==> $file"

@@ -1,0 +1,12 @@
+[Unit]
+Description=Sway Window manager
+After=systemd-logind.service
+Requires=systemd-logind.service
+
+[Service]
+ExecStart=sway
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=default.target

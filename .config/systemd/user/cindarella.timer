@@ -1,0 +1,8 @@
+[Unit]
+Description=Cindarella Timer
+
+[Timer]
+OnCalendar=*-*-* 0:00:00
+
+[Install]
+WantedBy=timers.target

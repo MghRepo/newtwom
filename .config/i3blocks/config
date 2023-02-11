@@ -1,0 +1,87 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=16
+color=#fdfffe
+
+[title]
+command=/home/hugo/.local/bin/title
+align=center
+interval=1
+
+[cpuramu]
+command=/home/hugo/.local/bin/cpuramu
+min_width=180
+align=center
+interval=5
+
+[wlsig]
+command=/home/hugo/.local/bin/wlsig
+interval=120
+
+[battery]
+command=/home/hugo/.local/bin/battery
+interval=120
+
+[weather]
+command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/\1/' $XDG_RUNTIME_DIR/wthr | tr -d ':'"
+separator=false
+align=center
+interval=once
+signal=11
+
+[wfillerl]
+separator=false
+separator_block_width=0
+full_text=>
+color=#d43f3f
+
+[wfillerr]
+separator=false
+full_text=>
+color=#b3bf3b
+
+[temperature]
+command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1/' $XDG_RUNTIME_DIR/wthr"
+align=center
+interval=once
+signal=11
+
+[date]
+separator=false
+command=date '+%A %d %B'
+align=center
+interval=once
+signal=10
+
+[timefillerl]
+separator=false
+separator_block_width=0
+full_text=>
+color=#f2cf66
+
+[timefillerr]
+separator=false
+full_text=>
+color=#69a1cf
+
+[time]
+separator=false
+command=date '+%H:%M:%S'
+align=center
+interval=1
+
+[power]
+separator_block_width=0
+background=#265f8f
+full_text= ⏻ 
+min_width=20
+align=center
+command=systemctl poweroff
