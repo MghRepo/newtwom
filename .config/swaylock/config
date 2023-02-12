@@ -24,7 +24,7 @@ text-ver-color=fdfffe
 text-wrong-color=fdfffe
 font=JetBrainsMono
 font-size=18
-indicator-caps-lock
 indicator-idle-visible
+indicator-caps-lock
 indicator-radius=128
 indicator-thickness=8

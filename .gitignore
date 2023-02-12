@@ -31,6 +31,8 @@
 /.config/neofetch/
 /.config/pavucontrol.ini
 /.config/procps/
+/.config/pulse/
+/.config/weechat/
 
 /.local/*
 !/.local/bin/
