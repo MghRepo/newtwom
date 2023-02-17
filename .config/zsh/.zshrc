@@ -15,6 +15,28 @@ zstyle ':completion::complete:*' gain-privileges 1
 promptinit
 prompt walters
 
+# Keybindings hash compatible zkbd
+typeset -g -A key
+
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+key[Insert]="${terminfo[kich1]}"
+key[Backspace]="${terminfo[kbs]}"
+key[Delete]="${terminfo[kdch1]}"
+key[Up]="${terminfo[kcuu1]}"
+key[Down]="${terminfo[kcud1]}"
+key[Left]="${terminfo[kcub1]}"
+key[Right]="${terminfo[kcuf1]}"
+key[PageUp]="${terminfo[kpp]}"
+key[PageDown]="${terminfo[knp]}"
+key[Shift-Tab]="${terminfo[kcbt]}"
+
+# Mise en place des touches
+
+[[ -n "${key[Home]}"            ]] && bindkey -- "${key[Home]}"         beginning-of-line
+[[ -n "${key[End]}"             ]] && bindkey -- "${key[End]}"          end-of-line
+#[[ -n "${}"                     ]] && bindkey -- "${}"         beginning-of-line
+
 # Recherche dans l'historique
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
