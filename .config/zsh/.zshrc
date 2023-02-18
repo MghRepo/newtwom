@@ -4,7 +4,15 @@ HISTSIZE=1000
 SAVEHIST=1000
 
 # Autoload
-autoload -Uz compinit promptinit up-line-or-beginning-search down-line-or-beginning-search
+autoload -Uz compinit \
+                promptinit \
+                up-line-or-beginning-search \
+                down-line-or-beginning-search \
+                run-help \
+                run-help-git \
+                run-help-ip \
+                run-help-openssl \
+                run-help-sudo
 
 # Completion
 compinit -d ~/.local/state/zsh/zcompdump
@@ -64,6 +72,10 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 [[ -n "${key[up]}"       ]] && bindkey -- "${key[up]}"   up-line-or-beginning-search
 [[ -n "${key[down]}"     ]] && bindkey -- "${key[down]}" down-line-or-beginning-search
+
+# Commandes d'aide
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
 
 # Plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
