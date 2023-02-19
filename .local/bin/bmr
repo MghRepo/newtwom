@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bemenu-run -b -p "" --fn "JetBrainsMono 14" --fb "#69a1cf" \
+bemenu-run -b -p "" --fn "JetBrainsMono 11" --fb "#69a1cf" \
                                             --ff "#363a38" \
                                             --hb "#265f8f" \
                                             --hf "#fdfffe" \
