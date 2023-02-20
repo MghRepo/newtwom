@@ -18,6 +18,7 @@
 /.vim/*
 
 /.bash_*
+/.bashrc
 /.gitconfig
 /.identity
 /.lesshst
