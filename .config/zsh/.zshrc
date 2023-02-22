@@ -16,7 +16,6 @@ autoload -Uz compinit \
 
 # Completion
 compinit -d ~/.local/state/zsh/zcompdump
-zstyle ':completion:*' menu select
 zstyle ':completion::complete:*' gain-privileges 1
 
 # Prompt
