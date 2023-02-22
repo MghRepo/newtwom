@@ -5,7 +5,6 @@ SAVEHIST=1000
 
 # Autoload
 autoload -Uz compinit \
-                promptinit \
                 up-line-or-beginning-search \
                 down-line-or-beginning-search \
                 run-help \
@@ -19,8 +18,8 @@ compinit -d ~/.local/state/zsh/zcompdump
 zstyle ':completion::complete:*' gain-privileges 1
 
 # Prompt
-promptinit
-prompt walters
+PROMPT='%~ %F{13}>%F{14}>%f> '
+RPROMPT='[%F{11}%?%f]'
 
 # Keybindings hash compatible zkbd
 typeset -g -A key
