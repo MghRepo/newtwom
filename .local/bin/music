@@ -1,5 +1,5 @@
 #!/bin/bash
 
-alacritty -e ncmpcpp -c ~/.config/ncmpcpp/config -s playlist </dev/null 2>/dev/null &
+alacritty -e ncmpcpp -c ~/.config/ncmpcpp/config -q -s playlist &
 
 exit 0

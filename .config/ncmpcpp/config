@@ -327,7 +327,7 @@ song_list_format = {  %a - }{%t}|{$8%f$9}$R{$5(%l)$9  }
 ## state (either unknown, play, pause, or stop) for its duration.
 ##
 #
-execute_on_player_state_change = notify-send "Now Playing 🎶" "$(ncmpcpp --current-song '{%a - }{%t}')"
+#execute_on_player_state_change = notify-send "Now Playing 🎶" "$(ncmpcpp --current-song '{%a - }{%t}')"
 #
 #playlist_show_mpd_host = no
 #
