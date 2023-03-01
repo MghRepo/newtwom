@@ -1,0 +1,10 @@
+[Unit]
+Description=Sway Idle Manager
+After=sway.service
+Requires=sway.service
+
+[Service]
+ExecStart=swayidle -w
+
+[Install]
+WantedBy=graphical-session.target
