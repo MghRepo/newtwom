@@ -7,4 +7,4 @@ Type=oneshot
 ExecStart=/home/hugo/.local/bin/weather Toulouse
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=sway-session.target
