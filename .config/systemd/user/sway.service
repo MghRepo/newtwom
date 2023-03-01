@@ -9,4 +9,4 @@ Restart=always
 RestartSec=10
 
 [Install]
-WantedBy=graphical-session.target
+WantedBy=sway-session.target
