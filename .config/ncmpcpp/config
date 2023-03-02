@@ -366,7 +366,7 @@ centered_cursor = yes
 ## Note: You can specify third character which will be used to build 'empty'
 ## part of progressbar.
 ##
-progressbar_look = -|-
+progressbar_look = ―――
 progressbar_color = "white"
 progressbar_elapsed_color = "blue"
 #
