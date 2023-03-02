@@ -1,6 +1,6 @@
 [Unit]
 Description=Multimedia Service Session Manager
-After=pipewire.service xdg-desktop-portal.service
+After=pipewire.service
 Requires=xdg-desktop-portal.service
 BindsTo=pipewire.service
 Conflicts=pipewire-media-session.service

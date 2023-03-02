@@ -7,6 +7,7 @@ Requires=sway.service
 [Service]
 Type=simple
 ExecStart=swayidle -w
+OnBootSec=3
 
 [Install]
 WantedBy=sway-session.target
