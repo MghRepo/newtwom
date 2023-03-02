@@ -40,8 +40,6 @@ output eDP-1 {
     bg ~/images/hor.jpg fill
 }
 
-exec swayidle -w
-
 ### Input configuration
 #
 # Example configuration:
@@ -232,3 +230,6 @@ bar {
 }
 
 include /etc/sway/config.d/*
+
+exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
+        systemctl --user start sway-session.target"
