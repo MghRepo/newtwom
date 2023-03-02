@@ -1,7 +1,0 @@
-2023-02-05 14:26:33 - [swaybg-1.2.0/main.c:293] Found config * for output eDP-1 (LG Display 0x0612)
-Environment variable $DISPLAY not set, ignoring.
-Environment variable $XDG_CURRENT_DESKTOP not set, ignoring.
-00:37:32.563 [ERROR] [wlr] [libinput] event2  - Lid Switch: client bug: event processing lagging behind by 739ms, your system is too slow
-
-[2023-02-05T16:33:51Z ERROR viaduct::backend::ffi] Missing HTTP status
-[2023-02-05T16:33:51Z ERROR viaduct::backend::ffi] Missing HTTP status
