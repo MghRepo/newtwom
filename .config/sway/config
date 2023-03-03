@@ -230,6 +230,4 @@ bar {
 }
 
 include /etc/sway/config.d/*
-
-exec "systemctl --user import-environment {,WAYLAND_}DISPLAY SWAYSOCK; \
-        systemctl --user start sway-session.target"
+exec "systemctl --user start sway-session.target"
