@@ -1,1 +1,1 @@
-/usr/lib/systemd/user/graphical-session.target
+/home/hugo/.config/systemd/user/sway.target
