@@ -2,7 +2,6 @@
 Description=Weather Timer
 
 [Timer]
-OnBootSec=0
 OnUnitActiveSec=1800
 
 [Install]
