@@ -1,8 +1,6 @@
 [Unit]
 Description=Idle Manager for Wayland
 Documentation=man:swayidle(1)
-After=sway.service
-Requires=sway.service
 
 [Service]
 Type=simple

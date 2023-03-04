@@ -1,6 +1,5 @@
 [Unit]
-Description=Sway
-Documentation=man:sway(1)
+Description=Sway Session
+Documentation=man:systemd.special(7)
 BindsTo=graphical-session.target
-Wants=graphical-session-pre.target
-After=graphical-session-pre.target
+Requires=sway.service

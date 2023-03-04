@@ -1,6 +1,5 @@
 [Unit]
 Description=Get Weather
-After=network.target
 
 [Service]
 Type=oneshot
