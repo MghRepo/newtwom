@@ -1,5 +1,5 @@
 [Unit]
-Description=Sway Session
+Description=Sway Window Manager
 Documentation=man:systemd.special(7)
 BindsTo=graphical-session.target
 Requires=sway.service
