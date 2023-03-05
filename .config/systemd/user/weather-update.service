@@ -1,8 +1,9 @@
 [Unit]
 Description=Get Weather
-PartOf=graphical-session.target
+BindsTo=sway-session.target
 
 [Service]
+Slice=session.slice
 Type=oneshot
 ExecStart=/home/hugo/.local/bin/weather Toulouse
 
