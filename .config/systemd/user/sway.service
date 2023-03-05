@@ -8,9 +8,8 @@ After=graphical-session-pre.target
 [Service]
 Slice=session.slice
 Type=simple
-EnvironmentFile=-%h/.config/sway/env
 ExecStart=sway
-ExecStop=systemctl --user unset-environment MOZ_ENABLE_WAYLAND XDG_CURRENT_DESKTOP WAYLAND_DISPLAY
+ExecStop=systemctl --user unset-environment XDG_CURRENT_DESKTOP WAYLAND_DISPLAY
 Restart=on-failure
 RestartSec=1
 TimeoutStopSec=10
