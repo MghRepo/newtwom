@@ -3,6 +3,6 @@ Description=Send Cindarella Signal
 BindsTo=sway-session.target
 
 [Service]
-Slice=session.slice
 Type=oneshot
 ExecStart=/bin/bash -c 'pgrep i3blocks && pkill -SIGRTMIN+10 i3blocks; exit 0'
+Slice=session.slice

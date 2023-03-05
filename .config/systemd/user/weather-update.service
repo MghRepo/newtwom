@@ -3,9 +3,9 @@ Description=Get Weather
 BindsTo=sway-session.target
 
 [Service]
-Slice=session.slice
 Type=oneshot
 ExecStart=/home/hugo/.local/bin/weather Toulouse
+Slice=session.slice
 
 [Install]
 WantedBy=sway-session.target

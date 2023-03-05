@@ -1,13 +1,13 @@
 [Unit]
 Description=Idle Manager for Wayland
 Documentation=man:swayidle(1)
-BindsTo=sway-session.service
+BindsTo=sway-session.target
 ConditionEnvironment=WAYLAND_DISPLAY
 
 [Service]
-Slice=session.slice
 Type=simple
 ExecStart=swayidle -w
+Slice=session.slice
 
 [Install]
 WantedBy=sway-session.target
