@@ -3,3 +3,5 @@ Description=Sway Session
 Documentation=man:systemd.special(7)
 Requires=sway.target
 BindsTo=graphical-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target

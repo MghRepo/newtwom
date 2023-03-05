@@ -1,6 +1,8 @@
 [Unit]
 Description=Idle Manager for Wayland
 Documentation=man:swayidle(1)
+PartOf=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
 
 [Service]
 Type=simple
