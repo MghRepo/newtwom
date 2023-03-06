@@ -6,6 +6,7 @@ border-size=1
 default-timeout=30000
 font=JetBrainsMono 9.5
 height=100
+icons=0
 margin=0
 on-button-left=none
 on-button-right=none
