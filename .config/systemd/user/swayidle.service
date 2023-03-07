@@ -1,8 +1,9 @@
 [Unit]
 Description=Idle Manager for Wayland
 Documentation=man:swayidle(1)
+Requires=sway.service
+After=sway.service
 BindsTo=sway-session.target
-ConditionEnvironment=WAYLAND_DISPLAY
 
 [Service]
 Type=simple

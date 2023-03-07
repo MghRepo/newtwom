@@ -229,6 +229,8 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+exec systemctl --user import-environment WAYLAND_DISPLAY SWAYSOCK && \
+     systemd-notify --ready
 
-exec "systemctl --user start sway-session.target"
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd WAYLAND_DISPLAY SWAYSOCK
