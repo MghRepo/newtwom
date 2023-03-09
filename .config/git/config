@@ -1,0 +1,9 @@
+[user]
+	email = hn.brugel@gmail.com
+	name = Hugo BRUGEL
+[color]
+	ui = true
+[init]
+	defaultBranch = master
+[core]
+	pager = less -r
