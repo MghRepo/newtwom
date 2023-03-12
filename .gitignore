@@ -20,7 +20,6 @@
 
 /.bash_*
 /.bashrc
-/.gitconfig
 /.identity
 /.lesshst
 
@@ -29,7 +28,6 @@
 /.config/htop/
 /.config/libreoffice/
 /.config/mimeapps.list
-/.config/mpv/
 /.config/neofetch/
 /.config/pavucontrol.ini
 /.config/procps/
