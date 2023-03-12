@@ -205,8 +205,12 @@ set $text-color         #fdfffe
 set $f-bg-color         #69a1cf
 set $i-bg-color         #265f8f
 set $i-text-color       #999fa4
-set $indic-color        #601b74
+set $border-color       #69a1cf
+set $inactive-color     #363a38
+set $indic-color        #b07ebf
 set $selector           #6f7813
+
+client.focused          $border-color $bg-color $text-color $indic-color $border-color
 
 bar {
     position top
