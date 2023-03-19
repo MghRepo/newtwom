@@ -7,8 +7,9 @@
 
 
 # Global properties
-separator=true
-separator_block_width=16
+separator=false
+separator_block_width=0
+background=#04060a
 color=#fdfffe
 
 [title]
@@ -31,7 +32,7 @@ command=/home/hugo/.local/bin/battery
 interval=120
 
 [weather]
-command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/\1/' $XDG_RUNTIME_DIR/wthr | tr -d ':'"
+command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/  \1/' $XDG_RUNTIME_DIR/wthr | tr -d ':'"
 separator=false
 align=center
 interval=once
@@ -40,23 +41,23 @@ signal=11
 [wfillerl]
 separator=false
 separator_block_width=0
-full_text=>
+full_text=  >
 color=#d43f3f
 
 [wfillerr]
 separator=false
-full_text=>
+full_text=>  
 color=#b3bf3b
 
 [temperature]
-command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1/' $XDG_RUNTIME_DIR/wthr"
+command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1  /' $XDG_RUNTIME_DIR/wthr"
 align=center
 interval=once
 signal=11
 
 [date]
 separator=false
-command=date '+%A %d %B'
+command=date '+  %A %d %B'
 align=center
 interval=once
 signal=10
@@ -64,17 +65,17 @@ signal=10
 [timefillerl]
 separator=false
 separator_block_width=0
-full_text=>
+full_text=  >
 color=#f2cf66
 
 [timefillerr]
 separator=false
-full_text=>
+full_text=>  
 color=#69a1cf
 
 [time]
 separator=false
-command=date '+%H:%M:%S'
+command=date '+%H:%M:%S  '
 align=center
 interval=1
 
