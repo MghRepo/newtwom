@@ -6,6 +6,6 @@ echo "  [BAT $bat]  "
 echo "  [BAT $bat]  "
 echo "#04060a"
 
-[ ${bat%?} -le 20 ] && echo "#d43f3f" || echo "#b3bf3b"
+[ ${bat%?} -lt 20 ] && echo "#d43f3f" || echo "#b3bf3b"
 
 exit 0
