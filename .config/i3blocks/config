@@ -8,11 +8,12 @@
 
 # Global properties
 separator=true
-separator_block_width=0
+separator_block_width=14
 background=#04060a
 color=#fdfffe
 
 [title]
+separator=false
 command=/home/hugo/.local/bin/title
 align=center
 interval=1
@@ -20,20 +21,29 @@ interval=1
 [cpuramu]
 command=/home/hugo/.local/bin/cpuramu
 min_width=180
-align=center
+align=right
 interval=5
 
 [wlsig]
 command=/home/hugo/.local/bin/wlsig
 interval=120
 
-[battery]
-command=/home/hugo/.local/bin/battery
-interval=120
+[battery_full]
+separator=false
+separator_block_width=0
+command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bfull'
+signal=12
+#interval=120
+
+[battery_empty]
+background=#363a38
+command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bempt'
+signal=12
 
 [weather]
-command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/  \1/' $XDG_RUNTIME_DIR/wthr | tr -d ':'"
+command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/\1/' $XDG_RUNTIME_DIR/wthr | tr -d ':'"
 separator=false
+separator_block_width=0
 align=center
 interval=once
 signal=11
@@ -46,18 +56,20 @@ color=#d43f3f
 
 [wfillerr]
 separator=false
+separator_block_width=0
 full_text=>  
 color=#b3bf3b
 
 [temperature]
-command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1  /' $XDG_RUNTIME_DIR/wthr"
+command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1/' $XDG_RUNTIME_DIR/wthr"
 align=center
 interval=once
 signal=11
 
 [date]
 separator=false
-command=date '+  %A %d %B'
+separator_block_width=0
+command=date '+%A %d %B'
 align=center
 interval=once
 signal=10
@@ -70,12 +82,12 @@ color=#f2cf66
 
 [timefillerr]
 separator=false
+separator_block_width=4
 full_text=>  
 color=#69a1cf
 
 [time]
-separator=false
-command=date '+%H:%M:%S  '
+command=date '+%H:%M:%S'
 align=center
 interval=1
 

@@ -1,0 +1,8 @@
+[Unit]
+Description=Battery Charging State Timer
+
+[Timer]
+OnUnitActiveSec=180
+
+[Install]
+WantedBy=timers.target

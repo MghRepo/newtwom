@@ -1,0 +1,30 @@
+#!/bin/sh
+
+bat=$(acpi -b | rg -o '[0-9]+%')
+full=$(( ${bat%?}*16/100 ))
+empty=$(( 16-$full ))
+
+while [ $full -ne 0 ] ; do
+    fs+=' '
+    full=$(( $full-1 ))
+done
+
+while [ $empty -ne 0 ] ; do
+    es+=' '
+    empty=$(( $empty-1 ))
+done
+
+echo "$es" >$XDG_RUNTIME_DIR/bempt
+echo "$fs" >$XDG_RUNTIME_DIR/bfull
+echo "$fs" >>$XDG_RUNTIME_DIR/bfull
+echo "#04060a" >>$XDG_RUNTIME_DIR/bfull
+if [ ${bat%?} -le 20 ] 
+then
+    echo "#d43f3f" >>$XDG_RUNTIME_DIR/bfull
+else
+    echo "#b3bf3b" >>$XDG_RUNTIME_DIR/bfull
+fi
+
+pkill -SIGRTMIN+12 i3blocks
+
+exit 0
