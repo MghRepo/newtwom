@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bat=$(acpi -b | rg -o '[0-9]+%')
+[ $# -eq 0 ] && bat=$(acpi -b | rg -o '[0-9]+%') || bat=$1
 val=${bat%?}
 full=$(( $val*20/100 ))
 

@@ -20,7 +20,7 @@ interval=1
 
 [cpuramu]
 command=/home/hugo/.local/bin/cpuramu
-min_width=180
+min_width=190
 align=right
 interval=5
 
