@@ -2,7 +2,7 @@
 
 bat=$(acpi -b | rg -o '[0-9]+%')
 val=${bat%?}
-full=$(( $val*16/100 ))
+full=$(( $val*20/100 ))
 
 if [ $val -ne 100 ]
 then
@@ -10,9 +10,18 @@ then
 else
     empty=0
 fi
-empty=$(( 16-$full ))
-#fs=$bat
-#[ $val -ge 10 ] && full=$(( $full-3 )) || full=$(( $full-2 ))
+empty=$(( 20-$full ))
+message="[BAT $bat]"
+if [ $full -ge 9 ]
+then
+    fullen=9
+    full=$(( $full-9 ))
+else
+    fullen=$full
+    full=0
+fi
+fs=${message:0:$fullen}
+es=${message:$fullen}
 while [ $full -ne 0 ] ; do
     fs+=' '
     full=$(( $full-1 ))

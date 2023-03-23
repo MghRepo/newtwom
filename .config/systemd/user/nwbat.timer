@@ -2,7 +2,7 @@
 Description=Battery Charging State Timer
 
 [Timer]
-OnUnitActiveSec=180
+OnUnitActiveSec=120
 
 [Install]
 WantedBy=timers.target
