@@ -19,6 +19,12 @@ then
 else
     fullen=$full
     full=0
+    if [ $val -lt 10 ]
+    then
+        empty=$(( empty-(8-$fullen) ))
+    else
+        empty=$(( empty-(9-$fullen) ))
+    fi
 fi
 fs=${message:0:$fullen}
 es=${message:$fullen}
