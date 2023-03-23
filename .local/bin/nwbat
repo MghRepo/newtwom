@@ -1,9 +1,18 @@
 #!/bin/sh
 
 bat=$(acpi -b | rg -o '[0-9]+%')
-full=$(( ${bat%?}*16/100 ))
-empty=$(( 16-$full ))
+val=${bat%?}
+full=$(( $val*16/100 ))
 
+if [ $val -ne 100 ]
+then
+    full=$(( $full+1 ))
+else
+    empty=0
+fi
+empty=$(( 16-$full ))
+#fs=$bat
+#[ $val -ge 10 ] && full=$(( $full-3 )) || full=$(( $full-2 ))
 while [ $full -ne 0 ] ; do
     fs+=' '
     full=$(( $full-1 ))
