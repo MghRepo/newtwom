@@ -1,27 +1,23 @@
 #!/bin/bash
 
-# ⚡
-[ $# -eq 0 ] && bat=$(acpi -b | rg -o '[0-9]+%') || bat=$1
-bat=${bat%?}
+capacity=$(acpi -b | sed -r 's/.* ([0-9]+)%.*/\1/')
+barlen=20                                           # barlen >=10
 
-full=$(( bat*20/100 ))
+full=$(( capacity*barlen/100 ))
+[ "$capacity" -ne 100 ] && full=$(( full+1 ))
 
-if [ "$bat" -ne 100 ]; then
-    full=$(( full+1 ))
-fi
-empty=$(( 20-full ))
+empty=$(( barlen-full ))
 
-message="[BAT $bat%]"
+message="[BAT $capacity%]"
 messagelen=${#message}
-if [ "$full" -gt "$messagelen" ]; then
+if [ "$full" -gt "$messagelen" ] ; then
     full=$(( full-messagelen ))
     fs="$message"
 else
-    fullen=$full
+    empty=$(( empty-(messagelen-full) ))
+    fs=${message:0:$full}
+    es=${message:$full}
     full=0
-    empty=$(( empty-(messagelen-fullen) ))
-    fs=${message:0:$fullen}
-    es=${message:$fullen}
 fi
 
 while [ "$full" -ne 0 ] ; do
@@ -34,8 +30,8 @@ while [ "$empty" -ne 0 ] ; do
     empty=$(( empty-1 ))
 done
 
-if acpi -b | rg -q "Charging"; then
-    if [ -n "$es" ]; then
+if acpi -b | rg -q "Charging" ; then
+    if [ -n "$es" ] ; then
         eslen=${#eslen}
         eslen=$(( eslen-1 ))
         es=${es:0:$eslen}'⚡'
@@ -47,11 +43,9 @@ if acpi -b | rg -q "Charging"; then
 fi
 
 echo "$es" >"$XDG_RUNTIME_DIR"/bempt
-echo "$fs" >"$XDG_RUNTIME_DIR"/bfull
-echo "$fs" >>"$XDG_RUNTIME_DIR"/bfull
-echo "#04060a" >>"$XDG_RUNTIME_DIR"/bfull
-if [ "$bat" -le 20 ] 
-then
+
+echo -e "$fs\n$fs\n#04060a" >"$XDG_RUNTIME_DIR"/bfull
+if [ "$capacity" -le 20 ] ; then
     echo "#d43f3f" >>"$XDG_RUNTIME_DIR"/bfull
 else
     echo "#b3bf3b" >>"$XDG_RUNTIME_DIR"/bfull
