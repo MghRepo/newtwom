@@ -35,6 +35,7 @@ full_text=
 separator=false
 separator_block_width=0
 command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bfull'
+interval=once
 signal=12
 
 [battery_empty]
@@ -42,6 +43,7 @@ separator=false
 separator_block_width=0
 background=#363a38
 command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bempt'
+interval=once
 signal=12
 
 [battery_separator]
