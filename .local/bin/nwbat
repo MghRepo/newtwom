@@ -1,37 +1,29 @@
-#!/bin/sh
+#!/bin/bash
 
 # ⚡
-
 [ $# -eq 0 ] && bat=$(acpi -b | rg -o '[0-9]+%') || bat=$1
 bat=${bat%?}
 
 full=$(( bat*20/100 ))
 
-if [ "$bat" -ne 100 ]
-then
+if [ "$bat" -ne 100 ]; then
     full=$(( full+1 ))
-else
-    empty=0
 fi
 empty=$(( 20-full ))
 
 message="[BAT $bat%]"
-if [ "$full" -ge 9 ]
-then
-    fullen=9
-    full=$(( full-9 ))
+messagelen=${#message}
+if [ "$full" -gt "$messagelen" ]; then
+    full=$(( full-messagelen ))
+    fs="$message"
 else
     fullen=$full
     full=0
-    if [ "$bat" -lt 10 ]
-    then
-        empty=$(( empty-(8-fullen) ))
-    else
-        empty=$(( empty-(9-fullen) ))
-    fi
+    empty=$(( empty-(messagelen-fullen) ))
+    fs=${message:0:$fullen}
+    es=${message:$fullen}
 fi
-fs=${message:0:$fullen}
-es=${message:$fullen}
+
 while [ "$full" -ne 0 ] ; do
     fs="$fs"' '
     full=$(( full-1 ))
@@ -41,6 +33,18 @@ while [ "$empty" -ne 0 ] ; do
     es="$es"' '
     empty=$(( empty-1 ))
 done
+
+if acpi -b | rg -q "Charging"; then
+    if [ -n "$es" ]; then
+        eslen=${#eslen}
+        eslen=$(( eslen-1 ))
+        es=${es:0:$eslen}'⚡'
+    else
+        fslen=${#fslen}
+        fslen=$(( fslen-1 ))
+        fs=${fs:0:$fslen}'⚡'
+    fi
+fi
 
 echo "$es" >"$XDG_RUNTIME_DIR"/bempt
 echo "$fs" >"$XDG_RUNTIME_DIR"/bfull

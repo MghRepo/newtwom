@@ -1,9 +1,13 @@
 #!/bin/sh
 
 name=$(swaymsg -t get_tree | jq -r '..|try select (.focused == true ).name')
-title=$(echo $name | sed 's/\\//g;s/\(.\{80\}\).*/ \1\.\.\./')
+title=$(echo "$name" | sed 's/\\//g;s/\(.\{80\}\).*/ \1\.\.\./')
 
-echo $title | rg -q ^[0-9][0-9]?$
-[[ $? -eq 0 ]] && echo "Espace de travail n⁰$title" || echo "$title"
+
+if echo "$title" | rg -q ^[0-9][0-9]?$; then
+    echo "Espace de travail n⁰$title"
+else
+    echo "$title"
+fi
 
 exit 0

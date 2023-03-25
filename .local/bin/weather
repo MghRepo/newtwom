@@ -1,10 +1,8 @@
 #!/bin/sh
 
 city=$1
-url="https://wttr.in/$city?format=3"
 
-curl -Ss $url >$XDG_RUNTIME_DIR/wthr
-
+curl -Ss "https://wttr.in/$city?format=3" >"$XDG_RUNTIME_DIR"/wthr
 pkill -SIGRTMIN+11 i3blocks
 
 exit 0
