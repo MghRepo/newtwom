@@ -1,52 +1,56 @@
 #!/bin/sh
 
-[ $# -eq 0 ] && bat=$(acpi -b | rg -o '[0-9]+%') || bat=$1
-val=${bat%?}
-full=$(( $val*20/100 ))
+# ⚡
 
-if [ $val -ne 100 ]
+[ $# -eq 0 ] && bat=$(acpi -b | rg -o '[0-9]+%') || bat=$1
+bat=${bat%?}
+
+full=$(( bat*20/100 ))
+
+if [ "$bat" -ne 100 ]
 then
-    full=$(( $full+1 ))
+    full=$(( full+1 ))
 else
     empty=0
 fi
-empty=$(( 20-$full ))
-message="[BAT $bat]"
-if [ $full -ge 9 ]
+empty=$(( 20-full ))
+
+message="[BAT $bat%]"
+if [ "$full" -ge 9 ]
 then
     fullen=9
-    full=$(( $full-9 ))
+    full=$(( full-9 ))
 else
     fullen=$full
     full=0
-    if [ $val -lt 10 ]
+    if [ "$bat" -lt 10 ]
     then
-        empty=$(( empty-(8-$fullen) ))
+        empty=$(( empty-(8-fullen) ))
     else
-        empty=$(( empty-(9-$fullen) ))
+        empty=$(( empty-(9-fullen) ))
     fi
 fi
 fs=${message:0:$fullen}
 es=${message:$fullen}
-while [ $full -ne 0 ] ; do
-    fs+=' '
-    full=$(( $full-1 ))
+while [ "$full" -ne 0 ] ; do
+    fs="$fs"' '
+    full=$(( full-1 ))
 done
 
-while [ $empty -ne 0 ] ; do
-    es+=' '
-    empty=$(( $empty-1 ))
+while [ "$empty" -ne 0 ] ; do
+    es="$es"' '
+    empty=$(( empty-1 ))
 done
 
-echo "$es" >$XDG_RUNTIME_DIR/bempt
-echo "$fs" >$XDG_RUNTIME_DIR/bfull
-echo "$fs" >>$XDG_RUNTIME_DIR/bfull
-echo "#04060a" >>$XDG_RUNTIME_DIR/bfull
-if [ ${bat%?} -le 20 ] 
+echo "$es" >"$XDG_RUNTIME_DIR"/bempt
+echo "$fs" >"$XDG_RUNTIME_DIR"/bfull
+echo "$fs" >>"$XDG_RUNTIME_DIR"/bfull
+echo "#04060a" >>"$XDG_RUNTIME_DIR"/bfull
+if [ "$bat" -le 20 ] 
 then
-    echo "#d43f3f" >>$XDG_RUNTIME_DIR/bfull
+    echo "#d43f3f" >>"$XDG_RUNTIME_DIR"/bfull
 else
-    echo "#b3bf3b" >>$XDG_RUNTIME_DIR/bfull
+    echo "#b3bf3b" >>"$XDG_RUNTIME_DIR"/bfull
 fi
 
 pkill -SIGRTMIN+12 i3blocks

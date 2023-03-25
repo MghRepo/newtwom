@@ -22,11 +22,11 @@ interval=1
 command=/home/hugo/.local/bin/cpuramu
 min_width=190
 align=right
-interval=5
+interval=2
 
 [wlsig]
 command=/home/hugo/.local/bin/wlsig
-interval=120
+interval=60
 
 [battery_separator]
 full_text= 
