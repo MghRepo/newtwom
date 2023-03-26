@@ -1,5 +1,6 @@
 [Unit]
 Description=Get Weather
+Requires=sway.service
 After=sway.service
 BindsTo=sway-session.target
 

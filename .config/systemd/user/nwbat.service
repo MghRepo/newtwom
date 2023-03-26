@@ -1,5 +1,6 @@
 [Unit]
 Description=Get Battery Charging State
+Requires=sway.service
 After=sway.service
 BindsTo=sway-session.target
 
@@ -7,3 +8,6 @@ BindsTo=sway-session.target
 Type=oneshot
 ExecStart=/home/hugo/.local/bin/nwbat
 Slice=session.slice
+
+[Install]
+WantedBy=sway-session.target
