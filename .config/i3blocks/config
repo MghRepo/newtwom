@@ -35,7 +35,6 @@ full_text=
 separator=false
 separator_block_width=0
 command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bfull'
-interval=once
 signal=12
 
 [battery_empty]
@@ -43,7 +42,6 @@ separator=false
 separator_block_width=0
 background=#363a38
 command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/bempt'
-interval=once
 signal=12
 
 [battery_separator]
@@ -54,7 +52,6 @@ command=/bin/bash -c "sed -r 's/^([^ ]+ .).*$/ \1/' $XDG_RUNTIME_DIR/wthr | tr -
 separator=false
 separator_block_width=0
 align=center
-interval=once
 signal=11
 
 [wfillerl]
@@ -72,7 +69,6 @@ color=#b3bf3b
 [temperature]
 command=/bin/bash -c "sed -r 's/.* ([+-]?[0-9]+.*)$/🌡 \1 /' $XDG_RUNTIME_DIR/wthr"
 align=center
-interval=once
 signal=11
 
 [date]
@@ -96,6 +92,7 @@ full_text=>
 color=#69a1cf
 
 [time]
+separator=false
 command=date '+%H:%M:%S '
 align=center
 interval=1

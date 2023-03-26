@@ -1,7 +1,7 @@
 #!/bin/bash
 
 capacity=$(acpi -b | sed -r 's/.* ([0-9]+)%.*/\1/')
-barlen=20                                           # barlen >=10
+barlen=16                                           # barlen >=10
 
 full=$(( capacity*barlen/100 ))
 [ "$capacity" -ne 100 ] && full=$(( full+1 ))
