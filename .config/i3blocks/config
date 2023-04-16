@@ -11,11 +11,11 @@ separator=true
 separator_block_width=0
 background=#04060a
 color=#fdfffe
+align=center
 
 [title]
 separator=false
 command=/home/hugo/.local/bin/title
-align=center
 interval=1
 
 [cpuramu]

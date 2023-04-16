@@ -1,0 +1,7 @@
+[Unit]
+Description=On Resume
+After=suspend.target
+StopWhenUnneeded=yes
+
+[Install]
+WantedBy=suspend.target

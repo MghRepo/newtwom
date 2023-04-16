@@ -4,5 +4,5 @@ BindsTo=sway-session.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c 'pgrep i3blocks && pkill -SIGRTMIN+10 i3blocks; exit 0'
+ExecStart=bash -c 'pgrep i3blocks >/dev/null && pkill -SIGRTMIN+10 i3blocks; exit 0'
 Slice=session.slice

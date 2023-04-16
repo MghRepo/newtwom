@@ -3,6 +3,9 @@ HISTFILE=~/.local/state/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+
 # Autoload
 autoload -Uz compinit \
                 up-line-or-beginning-search \

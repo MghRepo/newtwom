@@ -1,8 +1,9 @@
 [Unit]
-Description=Battery Charging State Timer
+Description=Battery Indicator Timer
 
 [Timer]
-OnUnitActiveSec=30
+OnUnitActiveSec=100
+AccuracySec=10
 
 [Install]
 WantedBy=timers.target

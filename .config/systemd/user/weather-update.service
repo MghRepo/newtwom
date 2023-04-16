@@ -2,6 +2,7 @@
 Description=Get Weather
 Requires=sway.service
 After=sway.service
+PartOf=sway.service
 BindsTo=sway-session.target
 
 [Service]
@@ -10,4 +11,4 @@ ExecStart=/home/hugo/.local/bin/weather Toulouse
 Slice=session.slice
 
 [Install]
-WantedBy=sway-session.target
+WantedBy=sway-session.target resume.target

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 capacity=$(acpi -b | sed -r 's/.* ([0-9]+)%.*/\1/')
-barlen=16                                           # barlen >=10
+barlen=20                                           # barlen >=10
 
 full=$(( capacity*barlen/100 ))
 [ "$capacity" -ne 100 ] && full=$(( full+1 ))
@@ -30,7 +30,7 @@ while [ "$empty" -ne 0 ] ; do
     empty=$(( empty-1 ))
 done
 
-if acpi -b | rg -q "Charging" ; then
+if systemd-ac-power ; then
     if [ -n "$es" ] ; then
         eslen=${#eslen}
         eslen=$(( eslen-1 ))
@@ -51,6 +51,6 @@ else
     echo "#b3bf3b" >>"$XDG_RUNTIME_DIR"/bfull
 fi
 
-pkill -SIGRTMIN+12 i3blocks
+pgrep i3blocks >/dev/null && pkill -SIGRTMIN+12 i3blocks
 
 exit 0
