@@ -1,5 +1,6 @@
 #!/bin/bash
 
-file=~/images/cpt.png
-grim $file 
+file=~/images/captures/cpt"$(date +%H%M%d%m%Y)".png
+grim -g "$(slurp)" $file 
 notify-send -i $file "Clic :)" "Capture d'écran réussie\n==> $file"
+
