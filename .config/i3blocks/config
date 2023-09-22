@@ -29,6 +29,7 @@ command=/home/hugo/.local/bin/wlsig
 interval=60
 
 [battery_separator]
+separator=false
 full_text= 
 
 [battery_full]
