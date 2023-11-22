@@ -88,4 +88,6 @@ echo -e "$fs\n$fs\n#04060a\n#77bab1" >"$XDG_RUNTIME_DIR"/pfull
 >"$XDG_RUNTIME_DIR"/pempt
 pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
 
+notify-send "PMDR" "Fin de la pause !\nSuper+p pour lancer un nouveau cycle."
+
 exit 0
