@@ -11,6 +11,7 @@
 /.armagetronad/*
 /.cache/*
 /.cargo/*
+/.gnupg/*
 /.mozilla/*
 /.newsboat/*
 /.npm/*
@@ -24,6 +25,7 @@
 /.identity
 /.lesshst
 
+/.config/chromium/
 /.config/dconf/
 /.config/gtk-3.0/
 /.config/htop/

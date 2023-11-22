@@ -6,9 +6,12 @@
 xwayland enable
 
 bindsym Mod4+b exec firefox
-bindsym Mod4+m exec music
 bindsym Mod4+c exec capture
 bindsym Mod4+l exec swaylock -f
+bindsym Mod4+m exec music
+bindsym Mod4+p exec pmdr
+bindsym Mod4+Shift+s exec systemctl poweroff
+bindsym Mod4+Shift+r exec systemctl reboot
 default_border pixel 1
 
 ### Variables

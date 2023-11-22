@@ -28,6 +28,29 @@ interval=2
 command=/home/hugo/.local/bin/wlsig
 interval=60
 
+[pomodoro_separator]
+separator=false
+full_text= 
+
+[pomodoro_full]
+separator=false
+separator_block_width=0
+full_text=   [PMDR]   
+background=#77bab1
+color=#04060a
+command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/pfull'
+signal=13
+
+[pomodoro_empt]
+separator=false
+separator_block_width=0
+background=#363a38
+command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/pempt'
+signal=13
+
+[pomodoro_separator]
+full_text= 
+
 [battery_separator]
 separator=false
 full_text= 
