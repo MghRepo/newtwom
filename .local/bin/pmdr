@@ -49,7 +49,7 @@ swaymsg [con_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focuse
 
 wait
 
-cp ~/.local/status/pmdr/suivi.md ~/documents/pmdr_$(date +%d-%m-%Y_%H%M).md
+cp ~/.local/state/pmdr/suivi.md ~/documents/pmdr_$(date +%d-%m-%Y_%H%M).md
 
 notify-send "PMDR" "Fin de la session de travail.\nFiche de suivi $HOME/documents/pmdr_$(date +%d-%m-%Y_%H%M).md\nDébut de la pause..."
 
