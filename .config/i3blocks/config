@@ -35,7 +35,7 @@ full_text=
 [pomodoro_full]
 separator=false
 separator_block_width=0
-full_text=   [PMDR]   
+full_text=[PMDR]      
 background=#77bab1
 color=#04060a
 command=/bin/bash -c 'cat $XDG_RUNTIME_DIR/pfull'

@@ -2,6 +2,8 @@
 
 # Concept pomodoro 26 min -- 8 min 30 sec
 
+barlen=12
+
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty -e nvim ~/.local/state/pmdr/suivi.md &
 sleep 0.2
@@ -11,18 +13,34 @@ wait
 
 notify-send "PMDR" "Début de la session de travail..."
 
-fs="   [WORK]   "
+for ((sec=1560;sec>=1;sec--)) ; do
+    full=$(( 12*sec/1560 ))
+    [ "$sec" -ne 1560 ] && full=$(( full+1 ))
+    empty=$(( barlen-full ))
+    message="[WORK ${sec}s]"
+    messagelen=${#message}
+    if [ "$full" -gt "$messagelen" ] ; then
+        full=$(( full-messagelen ))
+        fs="$message"
+    else
+        empty=$(( empty-(messagelen-full) ))
+        fs=${message:0:$full}
+        es=${message:$full}
+        full=0
+    fi
 
-while ! [[ -z "$fs" ]] ; do
+    while [ "$full" -ne 0 ] ; do
+        fs="$fs"' '
+        full=$(( full-1 ))
+    done
+    while [ "$empty" -ne 0 ] ; do
+        es="$es"' '
+        empty=$((empty-1))
+    done
     echo -e "$fs\n$fs\n#04060a\n#f2cf66" >"$XDG_RUNTIME_DIR"/pfull
     echo -e "$es\n$es" >"$XDG_RUNTIME_DIR"/pempt
     pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
-    for ((sec=0;sec<130;sec++)); do
-        sleep 1
-    done
-    trof=$((${#fs}-1))
-    es=${fs:$trof}$es
-    fs=${fs::-1}
+    sleep 1
 done
 
 alacritty -e nvim ~/.local/state/pmdr/suivi.md &
@@ -35,22 +53,49 @@ cp .local/status/pmdr/suivi.md documents/pmdr_$(date +%d-%m-%Y_%H%M).md
 
 notify-send "PMDR" "Fin de la session de travail.\nDébut de la pause..."
 
-fs="   [PAUS]   "
-es=""
+for ((sec=510;sec>=1;sec--)) ; do
+    full=$(( 12*sec/1560 ))
+    [ "$sec" -ne 510 ] && full=$(( full+1 ))
+    empty=$(( barlen-full ))
+    message="[PAUSE ${sec}s]"
+    messagelen=${#message}
+    if [ "$full" -gt "$messagelen" ] ; then
+        full=$(( full-messagelen ))
+        fs="$message"
+    else
+        empty=$(( empty-(messagelen-full) ))
+        fs=${message:0:$full}
+        es=${message:$full}
+        full=0
+    fi
 
-while ! [[ -z "$fs" ]] ; do
-    echo -e "$fs\n$fs\n#04060a\n#69a1cf" >"$XDG_RUNTIME_DIR"/pfull
+    while [ "$full" -ne 0 ] ; do
+        fs="$fs"' '
+        full=$(( full-1 ))
+    done
+    while [ "$empty" -ne 0 ] ; do
+        es="$es"' '
+        empty=$((empty-1))
+    done
+    echo -e "$fs\n$fs\n#04060a\n#f2cf66" >"$XDG_RUNTIME_DIR"/pfull
     echo -e "$es\n$es" >"$XDG_RUNTIME_DIR"/pempt
     pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
-    for ((sec=0;sec<85;sec++)); do
-        sleep 0.5
-    done
-    trof=$((${#fs}-1))
-    es=${fs:$trof}$es
-    fs=${fs::-1}
+    sleep 1
 done
 
-fs="   [PMDR]   "
+#while ! [[ -z "$fs" ]] ; do
+#    echo -e "$fs\n$fs\n#04060a\n#69a1cf" >"$XDG_RUNTIME_DIR"/pfull
+#    echo -e "$es\n$es" >"$XDG_RUNTIME_DIR"/pempt
+#    pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
+#    for ((sec=0;sec<85;sec++)); do
+#        sleep 0.5
+#    done
+#    trof=$((${#fs}-1))
+#    es=${fs:$trof}$es
+#    fs=${fs::-1}
+#done
+
+fs="[PMDR]      "
 echo -e "$fs\n$fs\n#04060a\n#77bab1" >"$XDG_RUNTIME_DIR"/pfull
 >"$XDG_RUNTIME_DIR"/pempt
 pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
