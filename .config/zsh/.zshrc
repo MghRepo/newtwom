@@ -3,6 +3,8 @@ HISTFILE=~/.local/state/zsh/histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+precmd(){print -Pn "\e]0;{%~}\a"}
+
 bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey '^A' beginning-of-line

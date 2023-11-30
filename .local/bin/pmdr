@@ -1,23 +1,32 @@
 #!/bin/bash
 
-# Concept pomodoro 26 min -- 8 min 30 sec
+# Concept pomodoro 28 min -- 6 min 30 sec
+work=1680
+paus=390
 
 barlen=12
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty -e nvim ~/.local/state/pmdr/suivi.md &
 sleep 0.2
-swaymsg [con_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .id')] move scratchpad && swaymsg scratchpad show
+swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.focused == true).id')] move scratchpad && swaymsg scratchpad show
 
 wait
 
 notify-send "PMDR" "Début de la session de travail..."
 
-for ((sec=1560;sec>=1;sec--)) ; do
-    full=$(( 12*sec/1560 ))
-    [ "$sec" -ne 1560 ] && full=$(( full+1 ))
+for ((sec=work;sec>=1;sec--)) ; do
+    full=$(( 12*sec/work ))
+    [ "$sec" -ne "$work" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
-    message="[WORK ${sec}s]"
+    if [ $sec -gt 1200 ] ; then
+        message="[EWRK "
+    elif [ $sec -gt 480 ] ; then
+        message="[WORK "
+    else
+        message="[HWRK "
+    fi
+    message="$message${sec}s]"
     messagelen=${#message}
     if [ "$full" -gt "$messagelen" ] ; then
         full=$(( full-messagelen ))
@@ -37,7 +46,14 @@ for ((sec=1560;sec>=1;sec--)) ; do
         es="$es"' '
         empty=$((empty-1))
     done
-    echo -e "$fs\n$fs\n#04060a\n#f2cf66" >"$XDG_RUNTIME_DIR"/pfull
+    echo -e "$fs\n$fs\n#04060a" >"$XDG_RUNTIME_DIR"/pfull
+    if [ $sec -gt 1200 ] ; then
+        echo "#b3bf3b">>"$XDG_RUNTIME_DIR"/pfull
+    elif [ $sec -gt 480 ] ; then
+        echo "#f2cf66">>"$XDG_RUNTIME_DIR"/pfull
+    else
+        echo "#d43f3f">>"$XDG_RUNTIME_DIR"/pfull
+    fi
     echo -e "$es\n$es" >"$XDG_RUNTIME_DIR"/pempt
     pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
     sleep 1
@@ -53,9 +69,9 @@ cp ~/.local/state/pmdr/suivi.md ~/documents/pmdr_$(date +%d-%m-%Y_%H%M).md
 
 notify-send "PMDR" "Fin de la session de travail.\nFiche de suivi $HOME/documents/pmdr_$(date +%d-%m-%Y_%H%M).md\nDébut de la pause..."
 
-for ((sec=510;sec>=1;sec--)) ; do
-    full=$(( 12*sec/510 ))
-    [ "$sec" -ne 510 ] && full=$(( full+1 ))
+for ((sec=paus;sec>=1;sec--)) ; do
+    full=$(( 12*sec/paus ))
+    [ "$sec" -ne "$paus" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
     message="[PAUSE ${sec}s]"
     messagelen=${#message}
@@ -83,7 +99,7 @@ for ((sec=510;sec>=1;sec--)) ; do
     sleep 1
 done
 
-fs="[PMDR]      "
+fs=" [POMODORO] "
 echo -e "$fs\n$fs\n#04060a\n#77bab1" >"$XDG_RUNTIME_DIR"/pfull
 >"$XDG_RUNTIME_DIR"/pempt
 pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
