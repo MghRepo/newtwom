@@ -2,8 +2,8 @@
 Description=Battery Indicator Timer
 
 [Timer]
-OnUnitActiveSec=100
-AccuracySec=10
+OnUnitActiveSec=10
+AccuracySec=1
 
 [Install]
 WantedBy=timers.target

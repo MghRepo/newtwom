@@ -8,7 +8,7 @@ barlen=12
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty -e nvim ~/.local/state/pmdr/suivi.md &
-sleep 0.2
+sleep 0.3
 swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.focused == true).id')] move scratchpad && swaymsg scratchpad show
 
 wait
