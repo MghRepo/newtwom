@@ -1,6 +1,6 @@
 #!/bin/bash
 
-capacity=$(acpi -b | sed -r 's/.* ([0-9]+)%.*/\1/')
+capacity=$(acpi -b | rg "Battery 0" | sed -r 's/.* ([0-9]+)%.*/\1/')
 barlen=16                                           # barlen >=10
 
 full=$(( capacity*barlen/100 ))
