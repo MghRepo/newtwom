@@ -7,7 +7,7 @@ BindsTo=sway-session.target
 
 [Service]
 Type=oneshot
-ExecStart=/home/hugo/.local/bin/weather Toulouse
+ExecStart=/home/hugo/.local/bin/weather Mont-Saint-Aignan
 Slice=session.slice
 
 [Install]
