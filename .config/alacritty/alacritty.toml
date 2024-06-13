@@ -26,7 +26,7 @@ foreground = "#fdfffe"
 size = 11.5
 
 [font.normal]
-family = "JetBrainsMono"
+family = "JetBrainsMonoNerdFont"
 
 [window]
 dynamic_title = true
