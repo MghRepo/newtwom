@@ -36,6 +36,8 @@
 /.config/procps/
 /.config/pulse/
 /.config/weechat/
+/.config/org.encroissant.app
 
 /.local/*
 !/.local/bin/
+/.local/bin/encr
