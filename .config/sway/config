@@ -217,7 +217,7 @@ client.focused          $border-color $bg-color $text-color $indic-color $border
 
 bar {
     position top
-    font JetBrainsMono 9.5
+    font JetBrainsMonoNerdFont 10
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
