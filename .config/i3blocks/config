@@ -81,13 +81,13 @@ signal=11
 [wfillerl]
 separator=false
 separator_block_width=0
-full_text=  >
+full_text= >
 color=#d43f3f
 
 [wfillerr]
 separator=false
 separator_block_width=0
-full_text=>  
+full_text=> 
 color=#b3bf3b
 
 [temperature]
@@ -98,7 +98,7 @@ signal=11
 [date]
 separator=false
 separator_block_width=0
-command=date '+ %A %d %B'
+command=echo " $(date '+%A %d %B')"
 align=center
 interval=once
 signal=10
@@ -106,13 +106,13 @@ signal=10
 [timefillerl]
 separator=false
 separator_block_width=0
-full_text=  >
+full_text= >
 color=#f2cf66
 
 [timefillerr]
 separator=false
 separator_block_width=4
-full_text=>  
+full_text=> 
 color=#69a1cf
 
 [time]
