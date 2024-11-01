@@ -1,7 +1,7 @@
 #!/bin/sh
 
 name=$(swaymsg -t get_tree | jq -r '..|try select (.focused == true ).name')
-title=$(echo "$name" | sed 's/\\//g;s/\(.\{80\}\).*/ \1\.\.\./')
+title=$(echo "$name" | sed 's/\\//g;s/\(.\{64\}\).*/\1\.\.\./')
 
 
 if echo "$title" | rg -q ^[0-9][0-9]?$; then
