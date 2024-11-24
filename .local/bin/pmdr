@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Concept pomodoro 28 min -- 6 min 30 sec
-work=3360
-paus=780
+work=1680
+paus=390
 
 barlen=12
 
@@ -19,16 +19,12 @@ for ((sec=work;sec>=1;sec--)) ; do
     full=$(( 12*sec/work ))
     [ "$sec" -ne "$work" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
-    if [ $sec -gt 2880 ] ; then
+    if [ $sec -gt 1320 ] ; then
         message="[EWRK "
-    elif [ $sec -gt 2160 ] ; then
-        message="[WORK "
-    elif [ $sec -gt 1200 ] ; then
-        message="[HWRK "
-    elif [ $sec -gt 480 ] ; then
+    elif [ $sec -gt 720 ] ; then
         message="[WORK "
     else
-        message="[EWORK "
+        message="[HWRK "
     fi
     message="$message${sec}s]"
     messagelen=${#message}
@@ -51,16 +47,12 @@ for ((sec=work;sec>=1;sec--)) ; do
         empty=$((empty-1))
     done
     echo -e "$fs\n$fs\n#04060a" >"$XDG_RUNTIME_DIR"/pfull
-    if [ $sec -gt 2880 ] ; then
+    if [ $sec -gt 1320 ] ; then
         echo "#b3bf3b">>"$XDG_RUNTIME_DIR"/pfull
-    elif [ $sec -gt 2160 ] ; then
-        echo "#f2cf66">>"$XDG_RUNTIME_DIR"/pfull
-    elif [ $sec -gt 1200 ] ; then
-        echo "#d43f3f">>"$XDG_RUNTIME_DIR"/pfull
-    elif [ $sec -gt 480 ] ; then
+    elif [ $sec -gt 720 ] ; then
         echo "#f2cf66">>"$XDG_RUNTIME_DIR"/pfull
     else
-        echo "#b3bf3b">>"$XDG_RUNTIME_DIR"/pfull
+        echo "#d43f3f">>"$XDG_RUNTIME_DIR"/pfull
     fi
     echo -e "$es\n$es" >"$XDG_RUNTIME_DIR"/pempt
     pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks
