@@ -15,7 +15,7 @@ wait
 
 notify-send "PMDR" "Début de la session de travail..."
 
-for ((sec=work;sec>=1;sec--)) ; do
+for ((sec=work;sec>=0;sec--)) ; do
     full=$(( 12*sec/work ))
     [ "$sec" -ne "$work" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
@@ -69,7 +69,7 @@ cp ~/.local/state/pmdr/suivi.md ~/documents/pmdr_$(date +%d-%m-%Y_%H%M).md
 
 notify-send "PMDR" "Fin de la session de travail.\nFiche de suivi $HOME/documents/pmdr_$(date +%d-%m-%Y_%H%M).md\nDébut de la pause..."
 
-for ((sec=paus;sec>=1;sec--)) ; do
+for ((sec=paus;sec>=0;sec--)) ; do
     full=$(( 12*sec/paus ))
     [ "$sec" -ne "$paus" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
