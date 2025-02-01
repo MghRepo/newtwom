@@ -34,11 +34,11 @@ if systemd-ac-power ; then
     if [ -n "$es" ] ; then
         eslen=${#eslen}
         eslen=$(( eslen-1 ))
-        es=${es:0:$eslen}'⚡'
+        es=${es:0:$eslen}'⎓'
     else
         fslen=${#fslen}
         fslen=$(( fslen-1 ))
-        fs=${fs:0:$fslen}'⚡'
+        fs=${fs:0:$fslen}'⎓'
     fi
 fi
 

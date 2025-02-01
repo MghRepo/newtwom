@@ -35,6 +35,7 @@
 /.config/pavucontrol.ini
 /.config/procps/
 /.config/pulse/
+/.config/Signal/
 /.config/weechat/
 /.config/org.encroissant.app
 
