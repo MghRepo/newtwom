@@ -26,7 +26,7 @@ interval=2
 
 [wlsig]
 command=/home/hugo/.local/bin/wlsig
-interval=60
+interval=5
 
 [pomodoro_separator]
 separator=false

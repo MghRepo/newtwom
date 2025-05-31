@@ -38,6 +38,8 @@
 /.config/Signal/
 /.config/weechat/
 /.config/org.encroissant.app
+/.config/QtProject.conf
+/.config/whoozle.github.io/
 
 /.local/*
 !/.local/bin/
