@@ -24,6 +24,7 @@
 /.bashrc
 /.identity
 /.lesshst
+/.viminfo
 
 /.config/chromium/
 /.config/dconf/
@@ -39,6 +40,7 @@
 /.config/weechat/
 /.config/org.encroissant.app
 /.config/QtProject.conf
+/.config/vlc/
 /.config/whoozle.github.io/
 
 /.local/*

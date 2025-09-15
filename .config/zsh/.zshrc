@@ -87,5 +87,5 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
-alias ll='ls -l'
+alias ll='exa -l'
 alias vim='nvim'
