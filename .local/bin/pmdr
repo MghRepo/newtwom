@@ -8,7 +8,7 @@ barlen=12
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty -e nvim ~/.local/state/pmdr/suivi.md &
-sleep 0.3
+sleep 0.2
 swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.focused == true).id')] move scratchpad && swaymsg scratchpad show
 
 wait
@@ -16,7 +16,7 @@ wait
 notify-send "PMDR" "Début de la session de travail..."
 
 for ((sec=work;sec>=0;sec--)) ; do
-    full=$(( 12*sec/work ))
+    full=$(( barlen*sec/work ))
     [ "$sec" -ne "$work" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
     if [ $sec -gt 1320 ] ; then
@@ -31,6 +31,7 @@ for ((sec=work;sec>=0;sec--)) ; do
     if [ "$full" -gt "$messagelen" ] ; then
         full=$(( full-messagelen ))
         fs="$message"
+        es=
     else
         empty=$(( empty-(messagelen-full) ))
         fs=${message:0:$full}
