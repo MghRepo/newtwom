@@ -2,7 +2,16 @@
 
 city=$1
 
+function sigi3blocks () {
+  pgrep i3blocks >/dev/null && pkill -SIGRTMIN+11 i3blocks
+}
+
 curl -L -Ss "https://wttr.in/$city?format=3" >"$XDG_RUNTIME_DIR"/wthr
-pgrep i3blocks >/dev/null && pkill -SIGRTMIN+11 i3blocks
+
+while pgrep -v i3blocks; do
+  sigi3blocks
+done
+
+sigi3blocks
 
 exit 0
