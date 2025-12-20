@@ -8,7 +8,7 @@ function sigi3blocks () {
 
 curl -L -Ss "https://wttr.in/$city?format=3" >"$XDG_RUNTIME_DIR"/wthr
 
-while pgrep -v i3blocks; do
+while [[ ! $(pgrep i3blocks) ]]; do
   sigi3blocks
 done
 
