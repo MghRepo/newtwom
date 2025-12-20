@@ -7,9 +7,9 @@ paus=390
 barlen=12
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
-alacritty -e nvim ~/.local/state/pmdr/suivi.md &
+alacritty --class="pmdr" -e nvim ~/.local/state/pmdr/suivi.md &
 sleep 0.2
-swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.focused == true).id')] move scratchpad && swaymsg scratchpad show
+swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.app_id == "pmdr").id')] move scratchpad && swaymsg scratchpad show
 
 wait
 
@@ -60,9 +60,9 @@ for ((sec=work;sec>=0;sec--)) ; do
     sleep 1
 done
 
-alacritty -e nvim ~/.local/state/pmdr/suivi.md &
+alacritty --class="pmdr" -e nvim ~/.local/state/pmdr/suivi.md &
 sleep 0.2
-swaymsg [con_id=$(swaymsg -t get_tree | jq '.. | select(.type?) | select(.focused==true) | .id')] move scratchpad && swaymsg scratchpad show
+swaymsg [con_id=$(swaymsg -t get_tree | jq -r '.. | try select(.app_id == "pmdr").id')] move scratchpad && swaymsg scratchpad show
 
 wait
 
