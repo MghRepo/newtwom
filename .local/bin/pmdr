@@ -4,7 +4,7 @@
 work=1680
 paus=390
 
-barlen=12
+barlen=14
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty --class="pmdr" -e nvim ~/.local/state/pmdr/suivi.md &
@@ -20,11 +20,11 @@ for ((sec=work;sec>=0;sec--)) ; do
     [ "$sec" -ne "$work" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
     if [ $sec -gt 1320 ] ; then
-        message="[EWRK "
+        message="  [EWRK "
     elif [ $sec -gt 720 ] ; then
-        message="[WORK "
+        message="  [WORK "
     else
-        message="[HWRK "
+        message="  [HWRK "
     fi
     message="$message${sec}s]"
     messagelen=${#message}
@@ -71,10 +71,10 @@ cp ~/.local/state/pmdr/suivi.md ~/documents/pmdr_$(date +%d-%m-%Y_%H%M).md
 notify-send "PMDR" "Fin de la session de travail.\nFiche de suivi $HOME/documents/pmdr_$(date +%d-%m-%Y_%H%M).md\nDébut de la pause..."
 
 for ((sec=paus;sec>=0;sec--)) ; do
-    full=$(( 12*sec/paus ))
+    full=$(( barlen*sec/paus ))
     [ "$sec" -ne "$paus" ] && full=$(( full+1 ))
     empty=$(( barlen-full ))
-    message="[PAUSE ${sec}s]"
+    message="  [PAUSE ${sec}s]"
     messagelen=${#message}
     if [ "$full" -gt "$messagelen" ] ; then
         full=$(( full-messagelen ))
@@ -100,7 +100,7 @@ for ((sec=paus;sec>=0;sec--)) ; do
     sleep 1
 done
 
-fs=" [POMODORO] "
+fs="  [POMODORO]  "
 echo -e "$fs\n$fs\n#04060a\n#77bab1" >"$XDG_RUNTIME_DIR"/pfull
 >"$XDG_RUNTIME_DIR"/pempt
 pgrep i3blocks >/dev/null && pkill -SIGRTMIN+13 i3blocks

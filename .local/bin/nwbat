@@ -1,18 +1,19 @@
 #!/bin/bash
 
 capacity=$(acpi -b | rg "Battery 0" | sed -r 's/.* ([0-9]+)%.*/\1/')
-barlen=12                                           # barlen >=10
+barlen=20                                           # barlen >=10
 
 full=$(( capacity*barlen/100 ))
 [ "$capacity" -ne 100 ] && full=$(( full+1 ))
 
 empty=$(( barlen-full ))
 
-message=" [BAT $capacity%]"
+message="  [BAT $capacity%]"
 messagelen=${#message}
 if [ "$full" -gt "$messagelen" ] ; then
     full=$(( full-messagelen ))
     fs="$message"
+    es=
 else
     empty=$(( empty-(messagelen-full) ))
     fs=${message:0:$full}
