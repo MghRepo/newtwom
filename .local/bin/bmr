@@ -1,10 +1,12 @@
 #!/bin/sh
 
-bemenu-run -b -p "" --fn "JetBrainsMono 11" --fb "#69a1cf" \
-                                            --ff "#363a38" \
-                                            --hb "#265f8f" \
-                                            --hf "#fdfffe" \
-                                            --nb "#69A1cf" \
-                                            --nf "#363a38" \
+bemenu-run -b -p "" --fn "JetBrainsMono 12"  --fb "#69a1cf" \
+                                             --ff "#04060a" \
+                                             --hb "#b51a1a" \
+                                             --hf "#fdfffe" \
+                                             --nb "#69A1cf" \
+                                             --nf "#04060a" \
+                                             --ab "#69A1cf" \
+                                             --af "#04060a"
 
 exit 0
