@@ -8,10 +8,12 @@ gress() {
     [ "$sec" -ne "$work" ] && full=$((full + 1))
     empty=$((barlen - full))
     if [ "$work" -eq 60 ]; then
-      message=" [EWORK "
+      message=" [LWORK "
     elif [ "$work" -eq 120 ]; then
-      message=" [NWORK "
+      message=" [EWORK "
     elif [ "$work" -eq 240 ]; then
+      message=" [NWORK "
+    elif [ "$work" -eq 480 ]; then
       message=" [HWORK "
     elif [ "$work" -eq 390 ]; then
       message=" [PAUSE "
@@ -45,6 +47,8 @@ gress() {
       echo "#f2cf66" >>"$XDG_RUNTIME_DIR"/pfull
     elif [ "$work" -eq 240 ]; then
       echo "#d43f3f" >>"$XDG_RUNTIME_DIR"/pfull
+    elif [ "$work" -eq 480 ]; then
+      echo "#b07ebf" >>"$XDG_RUNTIME_DIR"/pfull
     elif [ "$work" -eq 390 ]; then
       echo "#69a1cf" >>"$XDG_RUNTIME_DIR"/pfull
     fi
@@ -56,12 +60,13 @@ gress() {
   >"$XDG_RUNTIME_DIR"/pempt
 }
 
-ework=60
-nwork=120
-hwork=240
+lwork=60
+ework=120
+nwork=240
+hwork=480
 pause=390
 
-barlen=12
+barlen=24
 
 mkdir -p ~/.local/state/pmdr && cp ~/.config/pmdr/skel.md ~/.local/state/pmdr/suivi.md
 alacritty --class pmdr -e nvim ~/.local/state/pmdr/suivi.md &
@@ -72,18 +77,14 @@ wait
 
 notify-send "PMDR" "Début de la session de travail..."
 
+gress $lwork
+gress $lwork
 gress $ework
 gress $ework
-gress $nwork
-gress $nwork
+gress $ework
 gress $nwork
 gress $nwork
 gress $hwork
-gress $hwork
-gress $nwork
-gress $nwork
-gress $nwork
-gress $nwork
 gress $ework
 gress $ework
 
