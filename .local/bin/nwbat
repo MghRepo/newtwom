@@ -47,7 +47,7 @@ echo "$es" >"$XDG_RUNTIME_DIR"/bempt
 
 echo -e "$fs\n$fs\n#04060a" >"$XDG_RUNTIME_DIR"/bfull
 if [ "$capacity" -le 20 ] ; then
-    echo "#d43f3f" >>"$XDG_RUNTIME_DIR"/bfull
+    echo "#de5a5a" >>"$XDG_RUNTIME_DIR"/bfull
 else
     echo "#b3bf3b" >>"$XDG_RUNTIME_DIR"/bfull
 fi
