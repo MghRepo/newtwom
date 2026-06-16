@@ -82,7 +82,7 @@ signal=11
 separator=false
 separator_block_width=0
 full_text= >
-color=#d43f3f
+color=#de5a5a
 
 [wfillerr]
 separator=false
