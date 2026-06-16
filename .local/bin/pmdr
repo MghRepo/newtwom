@@ -46,7 +46,7 @@ gress() {
     elif [ "$work" -eq 120 ]; then
       echo "#f2cf66" >>"$XDG_RUNTIME_DIR"/pfull
     elif [ "$work" -eq 240 ]; then
-      echo "#d43f3f" >>"$XDG_RUNTIME_DIR"/pfull
+      echo "#de5a5a" >>"$XDG_RUNTIME_DIR"/pfull
     elif [ "$work" -eq 480 ]; then
       echo "#b07ebf" >>"$XDG_RUNTIME_DIR"/pfull
     elif [ "$work" -eq 390 ]; then
